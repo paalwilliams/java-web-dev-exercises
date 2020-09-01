@@ -6,10 +6,15 @@ public class MenuItem {
         Date myDate = new Date();
         System.out.println(myDate.getTime());
     }
+    private String name;
     private double price;
     private String description;
     private String category;
     private Date   created;
+
+    public String getName() {return name;}
+
+    public void setName(String newName) { this.name = newName;}
 
     public double getPrice() {
         return price;
@@ -44,7 +49,8 @@ public class MenuItem {
     }
 
 
-    public MenuItem(double price, String description, String category) {
+    public MenuItem(String name, double price, String description, String category) {
+        this.name = name;
         this.price = price;
         this.description = description;
         this.category = category;
@@ -64,4 +70,8 @@ public class MenuItem {
             return isRecent;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals((MenuItem) obj);
+    }
 }

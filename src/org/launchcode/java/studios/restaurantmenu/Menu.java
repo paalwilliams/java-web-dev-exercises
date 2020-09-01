@@ -1,30 +1,11 @@
 package org.launchcode.java.studios.restaurantmenu;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Menu {
     public static void main(String[] args) {
-        ArrayList<MenuItem> myMenuItems = new ArrayList<MenuItem>();
-        MenuItem pizza = new MenuItem(5.55, "A big pizza", "Main Course");
-        MenuItem spaghetti = new MenuItem(9.99, "A big spaghetti", "Main Course");
-        MenuItem chocolateCake = new MenuItem(1.99, "A big chocolate cake", "Dessert");
-        MenuItem hummus = new MenuItem(2.99, "Some big Hummus", "Appetizer");
-        myMenuItems.add(chocolateCake);
-        myMenuItems.add(hummus);
-        myMenuItems.add(pizza);
-        myMenuItems.add(spaghetti);
-        Menu myMenu = new Menu(myMenuItems);
 
-        ArrayList<MenuItem> menuItems = myMenu.getMenuItems();
-        menuItems.forEach((n) -> {
-            System.out.println(n.getDescription());
-            if(n.isRecentlyAdded()) {
-                System.out.println("Recently Added");
-            };
-            System.out.println(n.getCategory());
-            System.out.println("$" + n.getPrice());
-            System.out.println("_______________________");
-        });
     }
     private ArrayList<MenuItem> menuItems;
     private Date lastUpdated;
@@ -48,6 +29,49 @@ public class Menu {
     public Menu (ArrayList<MenuItem> menuItems) {
         this.menuItems = menuItems;
     }
+
+    public void addMenuItem(MenuItem newMenuItem) {
+        if(this.menuItems.contains(newMenuItem)) {
+            System.out.println("\n");
+            System.out.println("This Item is already on the menu. \n");
+        } else {
+            this.menuItems.add(newMenuItem);
+        }
+
+    }
+
+    public void removeMenuItem(MenuItem itemToRemove) {
+                menuItems.remove(itemToRemove);
+    }
+
+    public void getItem(String name) {
+        menuItems.forEach((n) -> {
+            if(n.getName().toLowerCase().equals(name.toLowerCase())){
+                System.out.println(n.getName());
+                System.out.println(n.getDescription());
+                if(n.isRecentlyAdded()) {
+                    System.out.println("Recently Added");
+                };
+                System.out.println(n.getCategory());
+                System.out.println("$" + n.getPrice());
+                System.out.println("_______________________");
+            }
+        });
+    }
+
+    public void getAllItems() {
+        menuItems.forEach((n) -> {
+            System.out.println(n.getName());
+            System.out.println(n.getDescription());
+            if(n.isRecentlyAdded()) {
+                System.out.println("Recently Added");
+            };
+            System.out.println(n.getCategory());
+            System.out.println("$" + n.getPrice());
+            System.out.println("_______________________");
+        });
+    }
+
 
 
 }

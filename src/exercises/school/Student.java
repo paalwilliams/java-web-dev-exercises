@@ -41,4 +41,40 @@ public class Student {
         this.GPA = GPA;
     }
 
+    public String getGradeLevel() {
+        String gradeLevel;
+        if(this.numberOfCredits >= 0 && this.numberOfCredits <= 29) {
+            gradeLevel = "Freshman";
+        }
+        else if (this.numberOfCredits >= 29 && this.numberOfCredits <= 59) {
+            gradeLevel = "Sophomore";
+        }
+        else if (this.numberOfCredits >= 60 && this.numberOfCredits <= 89) {
+            gradeLevel = "Junior";
+        }
+        else {
+            gradeLevel = "Senior";
+        }
+        return gradeLevel;
+    }
+
+    public void addGrade(int credits, double grade) {
+        double qualityScore = this.GPA * (double) this.numberOfCredits;
+        double newQualityScore = (double) grade * (double) credits;
+        double finalQualityScore = (qualityScore + newQualityScore);
+        this.numberOfCredits += credits;
+        double newGPA = finalQualityScore / numberOfCredits;
+        this.GPA = newGPA;
+    }
+
+    public boolean equals(Student myStudent) {
+        if(this.name.equals(myStudent.name)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+
 }

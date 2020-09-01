@@ -46,7 +46,22 @@ public class Course {
         this.students = students;
     }
 
+    public boolean equals(Course myCourse) {
+        if(this.title.equals(myCourse.title)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
-
-
+    @Override
+    public String toString() {
+        return "Course{" +
+                "title='" + title + '\'' +
+                ", preReqsRequired=" + preReqsRequired +
+                ", credits=" + credits +
+                ", students=" + students +
+                '}';
+    }
 }
