@@ -41,7 +41,11 @@ public class Menu {
     }
 
     public void removeMenuItem(MenuItem itemToRemove) {
-                menuItems.remove(itemToRemove);
+        if(!this.menuItems.contains(itemToRemove)) {
+            System.out.printf("This menu does not contain %s", itemToRemove.getName());
+        } else {
+            menuItems.remove(itemToRemove);
+        }
     }
 
     public void getItem(String name) {
